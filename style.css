@@ -10,7 +10,9 @@
 
 @font-face {
     font-family: "Neutral Face";
-    src:url("fonts/NeutralFaceRegular.woff2") format('woff2'), url("fonts/NeutralFace.otf") format("opentype"),url("fonts/NeutralFaceRegular.ttf") format("truetype");
+    src:url("fonts/NeutralFaceRegular.woff2") format('woff2'),
+     url("fonts/NeutralFace.otf") format("opentype"),
+     url("fonts/NeutralFaceRegular.ttf") format("truetype");
     font-weight: normal;
 }
 
