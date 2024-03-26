@@ -6,6 +6,8 @@ const customVariant = document.querySelectorAll('.variant-print')
 const editorComponent = document.getElementById('editor')
 const resultMerch = document.querySelector('.result-merch')
 const indicatorLayer = document.querySelector('.indicator')
+const finalClotheses = document.querySelectorAll('.final-clothes')
+const success = document.getElementById('success')
 function startGlitch(count, speed) {
     for (let i = 0; i < count; i++) {
         let elGlitch = document.createElement('div')
@@ -138,3 +140,48 @@ setInterval(() => {
 
     }
 }, 1000)
+
+function move(event,index) {
+    console.log({success},event)
+    let shiftX = event.clientX - finalClotheses[index].getBoundingClientRect().left;
+    let shiftY = event.clientY- finalClotheses[index].getBoundingClientRect().top;
+
+    finalClotheses[index].style.zIndex = 1000;
+    finalClotheses[index].style.margin ='initial'
+    finalClotheses[index].style.left ='initial'
+    finalClotheses[index].style.right ='initial'
+    finalClotheses[index].style.top ='initial'
+    finalClotheses[index].style.bottom ='initial'
+    moveAt(event.pageX, event.pageY);
+
+
+    function moveAt(pageX, pageY) {
+        console.log( pageX, shiftX)
+        finalClotheses[index].style.left = pageX- shiftX + 'px';
+        finalClotheses[index].style.top = pageY-success.getBoundingClientRect().y-pageYOffset  - shiftY + 'px';
+    }
+
+    function onMouseMove(event) {
+        moveAt(event.pageX, event.pageY);
+    }
+
+    finalClotheses[index].addEventListener('mousemove', onMouseMove);
+
+    finalClotheses[index].onmouseup = function() {
+        finalClotheses[index].removeEventListener('mousemove', onMouseMove);
+        finalClotheses[index].onmouseup = null;
+    };
+    finalClotheses[index].onclick = function() {
+        console.log('sdlsfs')
+        finalClotheses[index].removeEventListener('mousemove', onMouseMove);
+        finalClotheses[index].onmouseup = null;
+    };
+
+};
+
+for (let i = 0; i < finalClotheses.length; i++) {
+    finalClotheses[i].onmousedown =(e)=>{ move(e,i)}
+    finalClotheses[i].ondragstart = function() {
+        return false;
+    };
+}

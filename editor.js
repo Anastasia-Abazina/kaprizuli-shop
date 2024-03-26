@@ -102,19 +102,11 @@ function rotate(event, el) {
     let layerSize = {width: layer.getBoundingClientRect().width, height: layer.getBoundingClientRect().height}
     let shift = (-Math.atan((event.y - layerCenter.y) / (event.x - layerCenter.x)) * 180 / Math.PI * 2) + (+layer.style.rotate.replaceAll('deg', ''))
 
-    // if (!backCoord) {
-    //     backCoord = {x: event.x, y: event.y}
-    // }
     function eventRotate(e) {
-        // let degBack = Math.atan((backCoord.y-layerCenter.y)/(backCoord.x-layerCenter.x))* 180 / Math.PI
         let degCurrent = Math.atan((e.y - layerCenter.y) / (e.x - layerCenter.x)) * 180 / Math.PI * 2
         console.log(degCurrent)
-        // let distanceCurrent = Math.abs(((e.x - layerCenter.x) ** 2 + (e.y - layerCenter.y) ** 2) ** 1 / 2)
-        // console.log(distanceBack, distanceCurrent)
-        // backCoord = {x: e.x, y: e.y}
         rotation(degCurrent + shift)
     }
-
     document.body.style.cursor = getComputedStyle(el).cursor
     document.addEventListener('mousemove', eventRotate);
     document.onmouseup = function () {

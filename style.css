@@ -10,13 +10,13 @@
 
 @font-face {
     font-family: "Neutral Face";
-    src: url("fonts/NeutralFace.otf") format("opentype");
+    src:url("fonts/NeutralFaceRegular.woff2") format('woff2'), url("fonts/NeutralFace.otf") format("opentype");
     font-weight: normal;
 }
 
 @font-face {
     font-family: "Neutral Face";
-    src: url("fonts/NeutralFace-Bold.otf") format("opentype");
+    src: url("fonts/NeutralFaceBold.woff2") format('woff2'),url("fonts/NeutralFace-Bold.otf") format("opentype");
     font-weight: bold;
 }
 
@@ -515,6 +515,7 @@ a.next:active {
     aspect-ratio: 1/1;
     height: fit-content;
     object-fit: contain;
+    cursor: pointer;
 }
 .success-container .container-pictures > img:nth-of-type(1){
     top: -5%;width: 36.5%;transform: rotate(-17.548deg);flex-shrink: 0;
